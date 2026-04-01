@@ -33,9 +33,15 @@ class TokenStore:
         """Initialize Fernet cipher. Auto-generate key if not provided."""
         key_file = data_dir / ".token_key"
         if key:
-            return Fernet(key.encode())
+            try:
+                return Fernet(key.encode())
+            except ValueError:
+                logger.warning("token_encryption_key_invalid_fallback")
         if key_file.exists():
-            return Fernet(key_file.read_bytes().strip())
+            try:
+                return Fernet(key_file.read_bytes().strip())
+            except ValueError:
+                logger.warning("token_key_file_invalid_regenerate", path=str(key_file))
         # Generate and save new key
         new_key = Fernet.generate_key()
         key_file.write_bytes(new_key)

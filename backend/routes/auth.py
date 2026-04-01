@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Query, Request
 
-from backend.middleware.auth import CurrentUser
+from backend.local_identity import get_local_user_id
 from backend.schemas.envelope import ResponseEnvelope
 from backend.services.oauth_service import OAuthService
 from backend.services.token_store import TokenStore
@@ -34,8 +34,7 @@ async def oauth_callback(
 ) -> ResponseEnvelope:
     """GET /v1/auth/google/callback — Exchange authorization code for tokens."""
     token_data = _oauth().exchange_code(code)
-    # In MVP use state or a default user_id
-    user_id = f"user_{state[:8]}" if state else "user_default"
+    user_id = get_local_user_id()
     _store().store(user_id, token_data)
     return ResponseEnvelope.success(
         data={
@@ -47,9 +46,9 @@ async def oauth_callback(
 
 
 @router.post("/refresh")
-async def oauth_refresh(user: CurrentUser) -> ResponseEnvelope:
+async def oauth_refresh() -> ResponseEnvelope:
     """POST /v1/auth/google/refresh — Refresh access token."""
-    user_id = user or "user_default"
+    user_id = get_local_user_id()
     store = _store()
     token_data = store.get(user_id)
     if not token_data:
@@ -61,9 +60,9 @@ async def oauth_refresh(user: CurrentUser) -> ResponseEnvelope:
 
 
 @router.post("/revoke")
-async def oauth_revoke(user: CurrentUser) -> ResponseEnvelope:
+async def oauth_revoke() -> ResponseEnvelope:
     """POST /v1/auth/google/revoke — Revoke tokens and delete stored data."""
-    user_id = user or "user_default"
+    user_id = get_local_user_id()
     store = _store()
     token_data = store.get(user_id)
     if token_data:
@@ -73,9 +72,9 @@ async def oauth_revoke(user: CurrentUser) -> ResponseEnvelope:
 
 
 @router.get("/scopes")
-async def oauth_scopes(user: CurrentUser) -> ResponseEnvelope:
+async def oauth_scopes() -> ResponseEnvelope:
     """GET /v1/auth/google/scopes — List granted scopes for current user."""
-    user_id = user or "user_default"
+    user_id = get_local_user_id()
     token_data = _store().get(user_id)
     scopes = token_data.get("scopes", []) if token_data else []
     return ResponseEnvelope.success(data={"scopes": scopes})

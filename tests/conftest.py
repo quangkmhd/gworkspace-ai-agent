@@ -6,7 +6,6 @@ import os
 
 # Force mock mode for all tests
 os.environ["MOCK_MODE"] = "true"
-os.environ["API_KEY_ENABLED"] = "false"
 os.environ["DATABASE_URL"] = "sqlite:///data/test_gworkspace.db"
 
 import pytest

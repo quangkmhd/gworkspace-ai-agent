@@ -31,17 +31,12 @@ class Settings(BaseSettings):
     ENVIRONMENT: Environment = Environment.DEVELOPMENT
     DEBUG: bool = True
     LOG_LEVEL: str = "INFO"
-    HOST: str = "0.0.0.0"
+    HOST: str = "127.0.0.1"
     PORT: int = 8000
 
     # ── Mock Mode ────────────────────────────────────────────────
     # When True, tools return deterministic mock data (no Google credentials needed)
     MOCK_MODE: bool = True
-
-    # ── API Security ─────────────────────────────────────────────
-    # Simple API key for local dev (not Google OAuth - that's for Workspace APIs)
-    API_KEY: str = "dev-api-key-change-me"
-    API_KEY_ENABLED: bool = False  # Disable by default for local dev ease
 
     # ── Google OAuth 2.0 ─────────────────────────────────────────
     GOOGLE_CLIENT_ID: str = ""
@@ -50,13 +45,13 @@ class Settings(BaseSettings):
     GOOGLE_CREDENTIALS_FILE: str = ""  # Path to credentials.json
 
     # ── LLM Configuration ────────────────────────────────────────
-    LLM_PROVIDER: str = "google"  # google | openai | anthropic
-    LLM_MODEL: str = "gemini-2.0-flash"
+    LLM_PROVIDER: str = "google"  # google | vertex
+    LLM_MODEL: str = "gemini-3-flash-preview"
     LLM_TEMPERATURE: float = 0.1
     LLM_MAX_TOKENS: int = 4096
-    GOOGLE_API_KEY: str = ""  # For Gemini
-    OPENAI_API_KEY: str = ""
-    ANTHROPIC_API_KEY: str = ""
+    GOOGLE_API_KEY: str = ""  # For Google AI Studio (LLM_PROVIDER=google)
+    GOOGLE_CLOUD_PROJECT: str = ""  # For Vertex AI (LLM_PROVIDER=vertex)
+    GOOGLE_CLOUD_LOCATION: str = "global"  # For Vertex AI (LLM_PROVIDER=vertex)
 
     # ── Database / Storage ───────────────────────────────────────
     DATABASE_URL: str = "sqlite:///data/gworkspace.db"

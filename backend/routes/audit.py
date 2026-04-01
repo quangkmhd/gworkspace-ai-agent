@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Query
 
-from backend.middleware.auth import CurrentUser
 from backend.schemas.envelope import ResponseEnvelope
 from hitl.audit import AuditLogger
 
@@ -13,7 +12,6 @@ router = APIRouter(prefix="/v1/audit", tags=["Audit"])
 
 @router.get("/logs")
 async def query_logs(
-    user: CurrentUser,
     task_id: str | None = Query(None),
     action_id: str | None = Query(None),
     event_type: str | None = Query(None),
@@ -31,7 +29,7 @@ async def query_logs(
 
 
 @router.get("/approvals/{approval_id}")
-async def approval_trail(approval_id: str, user: CurrentUser) -> ResponseEnvelope:
+async def approval_trail(approval_id: str) -> ResponseEnvelope:
     """GET /v1/audit/approvals/{approval_id} — Full approval audit trail."""
     audit = AuditLogger()
     trail = audit.get_approval_trail(approval_id)

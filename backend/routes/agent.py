@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
-from backend.middleware.auth import CurrentUser
+from backend.local_identity import get_local_user_id
 from backend.schemas.action import CreateTaskRequest
 from backend.schemas.envelope import ResponseEnvelope
 from backend.services.agent_service import AgentService
@@ -16,11 +16,12 @@ _service = AgentService()
 
 
 @router.post("/tasks")
-async def create_task(body: CreateTaskRequest, user: CurrentUser) -> ResponseEnvelope:
+async def create_task(body: CreateTaskRequest) -> ResponseEnvelope:
     """POST /v1/agent/tasks — Create task from prompt."""
     try:
+        user_id = get_local_user_id()
         response = _service.create_task(
-            user_id=body.user_id,
+            user_id=user_id,
             prompt=body.prompt,
             context=body.context,
         )
@@ -30,7 +31,7 @@ async def create_task(body: CreateTaskRequest, user: CurrentUser) -> ResponseEnv
 
 
 @router.get("/tasks/{task_id}")
-async def get_task(task_id: str, user: CurrentUser) -> ResponseEnvelope:
+async def get_task(task_id: str) -> ResponseEnvelope:
     """GET /v1/agent/tasks/{task_id} — Get task status/plan."""
     response = _service.get_task(task_id)
     if not response:
@@ -39,14 +40,14 @@ async def get_task(task_id: str, user: CurrentUser) -> ResponseEnvelope:
 
 
 @router.get("/tasks/{task_id}/actions")
-async def get_task_actions(task_id: str, user: CurrentUser) -> ResponseEnvelope:
+async def get_task_actions(task_id: str) -> ResponseEnvelope:
     """GET /v1/agent/tasks/{task_id}/actions — List actions."""
     actions = _service.get_task_actions(task_id)
     return ResponseEnvelope.success(data={"actions": actions, "total": len(actions)})
 
 
 @router.get("/actions/{action_id}")
-async def get_action(action_id: str, user: CurrentUser) -> ResponseEnvelope:
+async def get_action(action_id: str) -> ResponseEnvelope:
     """GET /v1/agent/actions/{action_id} — Action detail."""
     action = _service.get_action(action_id)
     if not action:

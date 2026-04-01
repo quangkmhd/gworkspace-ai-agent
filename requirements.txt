@@ -13,6 +13,7 @@ langgraph-checkpoint-sqlite>=2.0.0
 # LangChain Google Workspace Tools
 langchain-google-community[gmail,drive,sheets,calendar]>=2.0.0
 langchain-google-genai>=2.0.0
+langchain-google-vertexai>=2.0.0
 
 # Google APIs (for custom Docs adapter + OAuth)
 google-api-python-client>=2.100.0

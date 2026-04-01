@@ -5,7 +5,7 @@ from __future__ import annotations
 from fastapi import APIRouter
 
 from backend.config import get_settings
-from backend.middleware.auth import CurrentUser
+from backend.local_identity import get_local_user_id
 from backend.schemas.action import ToolInvokeRequest
 from backend.schemas.envelope import ResponseEnvelope
 from backend.services.oauth_service import DEFAULT_SCOPES, OAuthService
@@ -38,12 +38,11 @@ async def get_tool(tool_name: str) -> ResponseEnvelope:
 async def invoke_tool(
     tool_name: str,
     body: ToolInvokeRequest,
-    user: CurrentUser,
 ) -> ResponseEnvelope:
     """POST /v1/tools/{tool_name}/invoke — Generic invoke with policy/HITL gate."""
     try:
         settings = get_settings()
-        user_id = user or "anonymous"
+        user_id = get_local_user_id()
         token_data = TokenStore().get(user_id)
         granted_scopes = token_data.get("scopes", []) if token_data else []
         if settings.MOCK_MODE and not token_data:

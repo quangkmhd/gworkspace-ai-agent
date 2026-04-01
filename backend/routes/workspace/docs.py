@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter
 
-from backend.middleware.auth import CurrentUser
+from backend.local_identity import get_local_user_id
 from backend.schemas.action import ToolInvokeRequest
 from backend.schemas.envelope import ResponseEnvelope
 from backend.services.tool_invoke_service import ToolInvokeService
@@ -14,8 +14,13 @@ router = APIRouter(prefix="/v1/workspace/docs", tags=["Docs"])
 
 def _invoke(tool: str, body: ToolInvokeRequest) -> ResponseEnvelope:
     try:
+        user_id = get_local_user_id()
         result = ToolInvokeService().invoke(
-            tool_name=tool, args=body.args, task_id=body.task_id, actor=body.actor, dry_run=body.dry_run,
+            tool_name=tool,
+            args=body.args,
+            task_id=body.task_id,
+            actor=user_id,
+            dry_run=body.dry_run,
         )
         return ResponseEnvelope.success(data=result)
     except ValueError as e:
@@ -23,30 +28,30 @@ def _invoke(tool: str, body: ToolInvokeRequest) -> ResponseEnvelope:
 
 
 @router.post("/create")
-async def create_document(body: ToolInvokeRequest, user: CurrentUser) -> ResponseEnvelope:
+async def create_document(body: ToolInvokeRequest) -> ResponseEnvelope:
     return _invoke("docs.create_document", body)
 
 
 @router.post("/get")
-async def get_document(body: ToolInvokeRequest, user: CurrentUser) -> ResponseEnvelope:
+async def get_document(body: ToolInvokeRequest) -> ResponseEnvelope:
     return _invoke("docs.get_document", body)
 
 
 @router.post("/batch-update")
-async def batch_update(body: ToolInvokeRequest, user: CurrentUser) -> ResponseEnvelope:
+async def batch_update(body: ToolInvokeRequest) -> ResponseEnvelope:
     return _invoke("docs.batch_update", body)
 
 
 @router.post("/insert-text")
-async def insert_text(body: ToolInvokeRequest, user: CurrentUser) -> ResponseEnvelope:
+async def insert_text(body: ToolInvokeRequest) -> ResponseEnvelope:
     return _invoke("docs.insert_text", body)
 
 
 @router.post("/replace-text")
-async def replace_text(body: ToolInvokeRequest, user: CurrentUser) -> ResponseEnvelope:
+async def replace_text(body: ToolInvokeRequest) -> ResponseEnvelope:
     return _invoke("docs.replace_text", body)
 
 
 @router.post("/share")
-async def share_document(body: ToolInvokeRequest, user: CurrentUser) -> ResponseEnvelope:
+async def share_document(body: ToolInvokeRequest) -> ResponseEnvelope:
     return _invoke("docs.share_document", body)

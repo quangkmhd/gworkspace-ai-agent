@@ -37,23 +37,15 @@ def _get_llm() -> Any:
             temperature=settings.LLM_TEMPERATURE,
             max_output_tokens=settings.LLM_MAX_TOKENS,
         )
-    elif provider == "openai":
-        from langchain_openai import ChatOpenAI
+    elif provider == "vertex":
+        from langchain_google_vertexai import ChatVertexAI
 
-        return ChatOpenAI(
-            model=settings.LLM_MODEL,
-            api_key=settings.OPENAI_API_KEY,
-            temperature=settings.LLM_TEMPERATURE,
-            max_tokens=settings.LLM_MAX_TOKENS,
-        )
-    elif provider == "anthropic":
-        from langchain_anthropic import ChatAnthropic
-
-        return ChatAnthropic(
+        return ChatVertexAI(
             model_name=settings.LLM_MODEL,
-            api_key=settings.ANTHROPIC_API_KEY,
+            project=settings.GOOGLE_CLOUD_PROJECT,
+            location=settings.GOOGLE_CLOUD_LOCATION,
             temperature=settings.LLM_TEMPERATURE,
-            max_tokens=settings.LLM_MAX_TOKENS,
+            max_output_tokens=settings.LLM_MAX_TOKENS,
         )
     else:
         raise ValueError(f"Unsupported LLM provider: {provider}")
