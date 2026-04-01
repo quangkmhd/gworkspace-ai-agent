@@ -1,0 +1,99 @@
+# OAuth Scopes Configuration
+# Maps tool names to required Google OAuth 2.0 scopes
+
+scopes:
+  # ── Gmail ──
+  gmail.search:
+    - "https://www.googleapis.com/auth/gmail.readonly"
+  gmail.get_message:
+    - "https://www.googleapis.com/auth/gmail.readonly"
+  gmail.get_thread:
+    - "https://www.googleapis.com/auth/gmail.readonly"
+  gmail.create_draft:
+    - "https://www.googleapis.com/auth/gmail.compose"
+  gmail.send_email:
+    - "https://www.googleapis.com/auth/gmail.send"
+
+  # ── Calendar ──
+  calendar.get_calendars_info:
+    - "https://www.googleapis.com/auth/calendar.readonly"
+  calendar.search_events:
+    - "https://www.googleapis.com/auth/calendar.readonly"
+  calendar.create_event:
+    - "https://www.googleapis.com/auth/calendar.events"
+  calendar.update_event:
+    - "https://www.googleapis.com/auth/calendar.events"
+  calendar.move_event:
+    - "https://www.googleapis.com/auth/calendar.events"
+  calendar.delete_event:
+    - "https://www.googleapis.com/auth/calendar.events"
+  calendar.get_current_datetime: []
+
+  # ── Google Docs ──
+  docs.create_document:
+    - "https://www.googleapis.com/auth/documents"
+    - "https://www.googleapis.com/auth/drive.file"
+  docs.get_document:
+    - "https://www.googleapis.com/auth/documents.readonly"
+  docs.batch_update:
+    - "https://www.googleapis.com/auth/documents"
+  docs.insert_text:
+    - "https://www.googleapis.com/auth/documents"
+  docs.replace_text:
+    - "https://www.googleapis.com/auth/documents"
+  docs.share_document:
+    - "https://www.googleapis.com/auth/drive"
+
+  # ── Sheets ──
+  sheets.create_spreadsheet:
+    - "https://www.googleapis.com/auth/spreadsheets"
+  sheets.get_spreadsheet_info:
+    - "https://www.googleapis.com/auth/spreadsheets.readonly"
+  sheets.read_data:
+    - "https://www.googleapis.com/auth/spreadsheets.readonly"
+  sheets.batch_read_data:
+    - "https://www.googleapis.com/auth/spreadsheets.readonly"
+  sheets.filtered_read_data:
+    - "https://www.googleapis.com/auth/spreadsheets.readonly"
+  sheets.update_values:
+    - "https://www.googleapis.com/auth/spreadsheets"
+  sheets.append_values:
+    - "https://www.googleapis.com/auth/spreadsheets"
+  sheets.clear_values:
+    - "https://www.googleapis.com/auth/spreadsheets"
+  sheets.batch_update_values:
+    - "https://www.googleapis.com/auth/spreadsheets"
+
+  # ── Drive ──
+  drive.search_files:
+    - "https://www.googleapis.com/auth/drive.metadata.readonly"
+  drive.upload_file:
+    - "https://www.googleapis.com/auth/drive.file"
+  drive.move_file:
+    - "https://www.googleapis.com/auth/drive"
+  drive.copy_file:
+    - "https://www.googleapis.com/auth/drive"
+  drive.share_file:
+    - "https://www.googleapis.com/auth/drive"
+  drive.delete_file:
+    - "https://www.googleapis.com/auth/drive"
+  drive.export_file:
+    - "https://www.googleapis.com/auth/drive.readonly"
+  drive.get_file_content:
+    - "https://www.googleapis.com/auth/drive.readonly"
+
+# All unique scopes needed for full access
+all_scopes:
+  - "https://www.googleapis.com/auth/gmail.readonly"
+  - "https://www.googleapis.com/auth/gmail.compose"
+  - "https://www.googleapis.com/auth/gmail.send"
+  - "https://www.googleapis.com/auth/calendar.readonly"
+  - "https://www.googleapis.com/auth/calendar.events"
+  - "https://www.googleapis.com/auth/documents"
+  - "https://www.googleapis.com/auth/documents.readonly"
+  - "https://www.googleapis.com/auth/spreadsheets"
+  - "https://www.googleapis.com/auth/spreadsheets.readonly"
+  - "https://www.googleapis.com/auth/drive"
+  - "https://www.googleapis.com/auth/drive.file"
+  - "https://www.googleapis.com/auth/drive.metadata.readonly"
+  - "https://www.googleapis.com/auth/drive.readonly"

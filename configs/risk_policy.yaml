@@ -1,0 +1,125 @@
+# Risk Policy Configuration
+# Maps tool names to their default risk level and HITL requirement
+
+risk_levels:
+  # ── Gmail ──
+  gmail.search:
+    risk: low
+    requires_hitl: false
+  gmail.get_message:
+    risk: low
+    requires_hitl: false
+  gmail.get_thread:
+    risk: low
+    requires_hitl: false
+  gmail.create_draft:
+    risk: medium
+    requires_hitl: false
+  gmail.send_email:
+    risk: high
+    requires_hitl: true
+
+  # ── Calendar ──
+  calendar.get_calendars_info:
+    risk: low
+    requires_hitl: false
+  calendar.search_events:
+    risk: low
+    requires_hitl: false
+  calendar.create_event:
+    risk: medium
+    requires_hitl: false
+  calendar.update_event:
+    risk: medium
+    requires_hitl: false
+  calendar.move_event:
+    risk: medium
+    requires_hitl: false
+  calendar.delete_event:
+    risk: high
+    requires_hitl: true
+  calendar.get_current_datetime:
+    risk: low
+    requires_hitl: false
+
+  # ── Google Docs (custom adapter) ──
+  docs.create_document:
+    risk: medium
+    requires_hitl: false
+  docs.get_document:
+    risk: low
+    requires_hitl: false
+  docs.batch_update:
+    risk: high
+    requires_hitl: true
+  docs.insert_text:
+    risk: medium
+    requires_hitl: false
+  docs.replace_text:
+    risk: medium
+    requires_hitl: false
+  docs.share_document:
+    risk: high
+    requires_hitl: true
+
+  # ── Sheets ──
+  sheets.create_spreadsheet:
+    risk: medium
+    requires_hitl: false
+  sheets.get_spreadsheet_info:
+    risk: low
+    requires_hitl: false
+  sheets.read_data:
+    risk: low
+    requires_hitl: false
+  sheets.batch_read_data:
+    risk: low
+    requires_hitl: false
+  sheets.filtered_read_data:
+    risk: low
+    requires_hitl: false
+  sheets.update_values:
+    risk: medium
+    requires_hitl: false
+  sheets.append_values:
+    risk: medium
+    requires_hitl: false
+  sheets.clear_values:
+    risk: high
+    requires_hitl: true
+  sheets.batch_update_values:
+    risk: high
+    requires_hitl: true
+
+  # ── Drive ──
+  drive.search_files:
+    risk: low
+    requires_hitl: false
+  drive.upload_file:
+    risk: medium
+    requires_hitl: false
+  drive.move_file:
+    risk: medium
+    requires_hitl: false
+  drive.copy_file:
+    risk: medium
+    requires_hitl: false
+  drive.share_file:
+    risk: high
+    requires_hitl: true
+  drive.delete_file:
+    risk: high
+    requires_hitl: true
+  drive.export_file:
+    risk: low
+    requires_hitl: false
+  drive.get_file_content:
+    risk: low
+    requires_hitl: false
+
+# Actions that ALWAYS require HITL regardless of policy override
+always_hitl_actions:
+  - send
+  - share
+  - delete
+  - critical_overwrite
