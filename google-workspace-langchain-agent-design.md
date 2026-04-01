@@ -1,4 +1,4 @@
-# Tai lieu thiet ke Agent LangChain tich hop Google Workspace (khong dung code)
+# Tai lieu thiet ke Agent LangChain tich hop Google Workspace
 
 ## 1) Muc tieu
 Xay dung mot AI Agent co the thao tac tren toan bo Google Workspace pho bien gom:
