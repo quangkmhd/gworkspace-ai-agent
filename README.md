@@ -1,13 +1,13 @@
 # Google Workspace AI Agent with Human-in-the-Loop
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)]()
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]()
-[![LangGraph](https://img.shields.io/badge/Powered_by-LangGraph-orange.svg)]()
+![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-Ready-orange?style=flat-square)
+![GWorkspace](https://img.shields.io/badge/Google-Workspace-4285F4?style=flat-square&logo=google&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)
 
 Automate your Google Workspace workflows safely with a smart AI agent featuring built-in Human-in-the-Loop (HITL) approval. Built for teams and professionals who want to delegate tedious tasks like email triaging, document summarization, and calendar management without losing control over critical actions. Safely execute 100+ Workspace actions with 1-click approvals.
 
-![Demo Visual](assets/demo.png)
+![Google Workspace AI Agent HITL Dashboard Demo](assets/demo.png)
 
 ## Key Features
 *   **Draft and send emails autonomously** while keeping you in the loop for final review and approval.
@@ -55,10 +55,11 @@ cd gworkspace-ai-agent
 pip install -e .
 ```
 
-### Method 2: Using Docker
+### Method 2: Using Virtual Environment
 ```bash
-docker build -t gworkspace-ai-agent .
-docker run -p 8000:8000 --env-file .env gworkspace-ai-agent
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
 ## Usage Examples
