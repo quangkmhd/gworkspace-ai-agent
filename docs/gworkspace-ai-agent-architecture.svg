@@ -1,0 +1,199 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="950" viewBox="0 0 1600 950">
+  <defs>
+    <style><![CDATA[
+      .bg { fill: #0d1117; }
+      .title { fill: #e6edf3; font: 700 24px Inter, Arial, sans-serif; }
+      .group-label { fill: #7dd3fc; font: 700 16px Inter, Arial, sans-serif; }
+      .node-text { fill: #e6edf3; font: 600 14px Inter, Arial, sans-serif; }
+      .node-text-sm { fill: #e6edf3; font: 600 12px Inter, Arial, sans-serif; }
+      .small-text { fill: #94a3b8; font: 500 11px Inter, Arial, sans-serif; }
+      .edge-label { fill: #a5f3fc; font: 500 11px Inter, Arial, sans-serif; }
+      .edge-green { fill: #a7f3d0; font: 600 12px Inter, Arial, sans-serif; }
+      .edge-purple { fill: #ddd6fe; font: 600 12px Inter, Arial, sans-serif; }
+      .edge-amber { fill: #fde68a; font: 500 11px Inter, Arial, sans-serif; }
+    ]]></style>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="aC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#38bdf8"/></marker>
+    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#34d399"/></marker>
+    <marker id="aP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c084fc"/></marker>
+    <marker id="aA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f59e0b"/></marker>
+    <marker id="aR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#f87171"/></marker>
+  </defs>
+
+  <rect class="bg" width="1600" height="950"/>
+
+  <!-- Title -->
+  <text class="title" x="800" y="38" text-anchor="middle">GWorkspace AI Agent — Architecture Overview</text>
+
+  <!-- ===== USER ===== -->
+  <ellipse cx="800" cy="85" rx="85" ry="32" fill="#1e3a5f" stroke="#38bdf8" stroke-width="2"/>
+  <text class="node-text" x="800" y="90" text-anchor="middle">👤 User</text>
+
+  <!-- ===== BACKEND ===== -->
+  <rect x="690" y="140" width="220" height="42" rx="8" fill="#111827" stroke="#6366f1" stroke-width="1.5"/>
+  <text class="node-text" x="800" y="166" text-anchor="middle">FastAPI Backend</text>
+
+  <!-- User → Backend -->
+  <line x1="800" y1="117" x2="800" y2="140" stroke="#38bdf8" stroke-width="2" marker-end="url(#aC)"/>
+  <text class="edge-label" x="810" y="132">request</text>
+
+  <!-- Backend → Planner -->
+  <path d="M690 161 L240 161 L240 280" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#aC)"/>
+  <text class="edge-label" x="380" y="155">prompt + context</text>
+
+  <!-- Response back -->
+  <path d="M910 161 L1480 161 L1480 75 L885 75" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6,3" fill="none" marker-end="url(#aC)"/>
+  <text class="edge-label" x="1250" y="153">results JSON</text>
+
+  <!-- ===== AI AGENT CORE ===== -->
+  <rect x="80" y="220" width="580" height="310" rx="14" fill="rgba(15,23,42,0.85)" stroke="#22d3ee" stroke-width="1.5" filter="url(#glow)"/>
+  <text class="group-label" x="100" y="248">🧠 AI Agent Core (LangGraph)</text>
+
+  <!-- Planner -->
+  <rect x="120" y="280" width="160" height="55" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text class="node-text" x="200" y="312" text-anchor="middle">Planner</text>
+
+  <!-- LLM Brain -->
+  <rect x="120" y="370" width="180" height="60" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text class="node-text" x="210" y="395" text-anchor="middle">LLM Brain</text>
+  <text class="small-text" x="210" y="415" text-anchor="middle">(Gemini 3.0 Flash)</text>
+
+  <!-- Gemini API (external) -->
+  <rect x="120" y="475" width="170" height="42" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+  <text class="node-text-sm" x="205" y="501" text-anchor="middle">☁️ Gemini API</text>
+
+  <!-- Risk Check Diamond -->
+  <polygon points="460,290 540,340 460,390 380,340" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text class="node-text" x="460" y="336" text-anchor="middle">Risk</text>
+  <text class="node-text" x="460" y="352" text-anchor="middle">Check</text>
+
+  <!-- Executor -->
+  <rect x="120" y="460" width="0" height="0" rx="0" fill="none" stroke="none"/>
+
+  <!-- Executor (inside agent core, below risk) -->
+  <rect x="390" y="420" width="180" height="55" rx="10" fill="#064e3b" stroke="#34d399" stroke-width="2"/>
+  <text class="node-text" x="480" y="447" text-anchor="middle">Executor</text>
+  <text class="small-text" x="480" y="463" text-anchor="middle">(auto-execute)</text>
+
+  <!-- Planner ↔ LLM -->
+  <line x1="200" y1="335" x2="200" y2="370" stroke="#f59e0b" stroke-width="2" marker-end="url(#aA)"/>
+  <text class="edge-amber" x="130" y="358">messages[]</text>
+
+  <!-- LLM → Gemini API -->
+  <line x1="210" y1="430" x2="210" y2="475" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#aA)"/>
+
+  <!-- Planner → Risk -->
+  <line x1="280" y1="307" x2="380" y2="335" stroke="#22d3ee" stroke-width="2" marker-end="url(#aC)"/>
+  <text class="edge-label" x="295" y="300">TaskPlan</text>
+
+  <!-- Risk → Executor (LOW) -->
+  <path d="M460 390 L460 420" stroke="#34d399" stroke-width="2.5" fill="none" marker-end="url(#aG)"/>
+  <text class="edge-green" x="470" y="412">LOW → auto</text>
+
+  <!-- Risk → HITL (MEDIUM+) -->
+  <line x1="540" y1="340" x2="700" y2="340" stroke="#c084fc" stroke-width="2.5" marker-end="url(#aP)"/>
+  <text class="edge-purple" x="555" y="375">≥ MEDIUM → interrupt()</text>
+
+  <!-- ===== HITL GATE ===== -->
+  <rect x="700" y="220" width="560" height="310" rx="14" fill="rgba(26,10,46,0.85)" stroke="#c084fc" stroke-width="1.5" filter="url(#glow)"/>
+  <text class="group-label" x="720" y="248">🛡️ Human-in-the-Loop Gate</text>
+
+  <!-- Paused state -->
+  <rect x="730" y="290" width="180" height="60" rx="10" fill="#2d1b4e" stroke="#c084fc" stroke-width="1.5"/>
+  <text class="node-text" x="820" y="316" text-anchor="middle">⏸️ Paused</text>
+  <text class="small-text" x="820" y="334" text-anchor="middle">(waiting approval)</text>
+
+  <!-- HITL → User (approval request) -->
+  <path d="M820 290 L820 260 L1280 260 L1280 95 L885 95" stroke="#c084fc" stroke-width="2" stroke-dasharray="6,3" fill="none" marker-end="url(#aP)"/>
+  <text class="edge-purple" x="1285" y="180">approval request</text>
+
+  <!-- Approve -->
+  <rect x="960" y="280" width="130" height="40" rx="8" fill="#064e3b" stroke="#34d399" stroke-width="1.5"/>
+  <text class="node-text-sm" x="1025" y="305" text-anchor="middle">✅ Approve</text>
+
+  <!-- Edit & Approve -->
+  <rect x="1110" y="280" width="130" height="40" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+  <text class="node-text-sm" x="1175" y="305" text-anchor="middle">✏️ Edit+Approve</text>
+
+  <!-- Reject -->
+  <rect x="960" y="340" width="130" height="40" rx="8" fill="#450a0a" stroke="#f87171" stroke-width="1.5"/>
+  <text class="node-text-sm" x="1025" y="365" text-anchor="middle">❌ Reject</text>
+
+  <!-- Cancel -->
+  <rect x="1110" y="340" width="130" height="40" rx="8" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
+  <text class="node-text-sm" x="1175" y="365" text-anchor="middle">🚫 Cancel</text>
+
+  <!-- Pause → Approve/Reject lines -->
+  <line x1="910" y1="310" x2="960" y2="300" stroke="#34d399" stroke-width="1.5" marker-end="url(#aG)"/>
+  <line x1="910" y1="330" x2="960" y2="360" stroke="#f87171" stroke-width="1.5" marker-end="url(#aR)"/>
+
+  <!-- State info -->
+  <text class="small-text" x="730" y="420" style="fill:#c084fc">States: PENDING → APPROVED | REJECTED | EDITED | CANCELLED | EXPIRED</text>
+  <text class="small-text" x="730" y="440" style="fill:#64748b">Every transition → AuditLogger (SQLite)</text>
+
+  <!-- Approve → Executor (resume) -->
+  <path d="M1025 260 L1025 210 L480 210 L480 400" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#aG)"/>
+  <text class="edge-green" x="700" y="205">resume execution</text>
+
+  <!-- ===== TOOL REGISTRY ===== -->
+  <rect x="380" y="580" width="200" height="55" rx="10" fill="#111827" stroke="#34d399" stroke-width="2"/>
+  <text class="node-text" x="480" y="607" text-anchor="middle">Tool Registry</text>
+  <text class="small-text" x="480" y="624" text-anchor="middle">(35+ tools)</text>
+
+  <!-- Executor → Registry -->
+  <line x1="480" y1="475" x2="480" y2="580" stroke="#34d399" stroke-width="2" marker-end="url(#aG)"/>
+  <text class="edge-green" x="490" y="530">invoke(tool, args)</text>
+
+  <!-- ===== OAUTH ===== -->
+  <rect x="1320" y="580" width="140" height="45" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1.5"/>
+  <text class="node-text-sm" x="1390" y="607" text-anchor="middle">🔑 OAuth 2.0</text>
+
+  <!-- ===== GOOGLE WORKSPACE ===== -->
+  <rect x="120" y="700" width="1360" height="110" rx="14" fill="rgba(12,18,34,0.85)" stroke="#a78bfa" stroke-width="1.5" filter="url(#glow)"/>
+  <text class="group-label" x="140" y="728">☁️ Google Workspace APIs</text>
+
+  <rect x="150" y="745" width="220" height="42" rx="8" fill="#1e293b" stroke="#22d3ee" stroke-width="1"/>
+  <text class="node-text-sm" x="260" y="770" text-anchor="middle">📧 Gmail API</text>
+
+  <rect x="390" y="745" width="220" height="42" rx="8" fill="#1e293b" stroke="#f87171" stroke-width="1"/>
+  <text class="node-text-sm" x="500" y="770" text-anchor="middle">📅 Calendar API</text>
+
+  <rect x="630" y="745" width="220" height="42" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+  <text class="node-text-sm" x="740" y="770" text-anchor="middle">📄 Docs API</text>
+
+  <rect x="870" y="745" width="220" height="42" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1"/>
+  <text class="node-text-sm" x="980" y="770" text-anchor="middle">📊 Sheets API</text>
+
+  <rect x="1110" y="745" width="220" height="42" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1"/>
+  <text class="node-text-sm" x="1220" y="770" text-anchor="middle">📁 Drive API</text>
+
+  <!-- Registry → Google APIs -->
+  <line x1="480" y1="635" x2="480" y2="700" stroke="#a78bfa" stroke-width="2" marker-end="url(#aP)"/>
+  <text class="edge-label" x="490" y="672" style="fill:#ddd6fe">API calls (Bearer token)</text>
+
+  <!-- OAuth → Google APIs -->
+  <path d="M1390 625 L1390 700" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#aP)"/>
+  <text class="small-text" x="1400" y="668" style="fill:#ddd6fe">tokens</text>
+
+  <!-- ===== LEGEND ===== -->
+  <rect x="20" y="840" width="340" height="95" rx="8" fill="#111827" stroke="#333" stroke-width="1"/>
+  <text class="small-text" x="35" y="862" style="fill:#e6edf3;font-weight:700;font-size:13px">Legend</text>
+
+  <line x1="35" y1="880" x2="60" y2="880" stroke="#34d399" stroke-width="2.5"/>
+  <text class="small-text" x="68" y="884">Safe auto-execution</text>
+
+  <line x1="200" y1="880" x2="225" y2="880" stroke="#38bdf8" stroke-width="2.5"/>
+  <text class="small-text" x="233" y="884">Request / Response</text>
+
+  <line x1="35" y1="900" x2="60" y2="900" stroke="#c084fc" stroke-width="2.5"/>
+  <text class="small-text" x="68" y="904">HITL approval flow</text>
+
+  <line x1="200" y1="900" x2="225" y2="900" stroke="#a78bfa" stroke-width="2.5"/>
+  <text class="small-text" x="233" y="904">Google API calls</text>
+
+  <line x1="35" y1="920" x2="60" y2="920" stroke="#f59e0b" stroke-width="2.5"/>
+  <text class="small-text" x="68" y="924">LLM reasoning</text>
+</svg>

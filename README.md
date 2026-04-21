@@ -9,6 +9,10 @@ Automate your Google Workspace workflows safely with a smart AI agent featuring 
 
 ![Google Workspace AI Agent HITL Dashboard Demo](assets/demo.png)
 
+## Architecture Overview
+
+![Architecture Overview](assets/architecture-overview.png)
+
 ## Key Features
 *   **Draft and send emails autonomously** while keeping you in the loop for final review and approval.
 *   **Schedule and manage Calendar events** without manual data entry, reducing scheduling conflicts.

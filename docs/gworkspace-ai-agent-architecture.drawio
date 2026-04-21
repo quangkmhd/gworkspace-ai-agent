@@ -1,0 +1,127 @@
+<mxfile host="app.diagrams.net" modified="2026-04-21T10:00:00.000Z" agent="GWorkspace" version="24.7.17">
+  <diagram id="gworkspace-arch" name="GWorkspace AI Agent Architecture">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="950" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- User -->
+        <mxCell id="user" value="👤 User" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#1e3a5f;strokeColor=#38bdf8;strokeWidth=2;fontFamily=Inter;fontSize=16;fontStyle=1;fontColor=#e6edf3;" vertex="1" parent="1">
+          <mxGeometry x="720" y="20" width="170" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Backend -->
+        <mxCell id="backend" value="FastAPI Backend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#111827;strokeColor=#6366f1;strokeWidth=2;fontFamily=Inter;fontSize=14;fontStyle=1;fontColor=#e6edf3;" vertex="1" parent="1">
+          <mxGeometry x="690" y="120" width="220" height="42" as="geometry"/>
+        </mxCell>
+
+        <!-- AI Agent Core group -->
+        <mxCell id="agent_bg" value="🧠 AI Agent Core (LangGraph)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#0f172a;strokeColor=#22d3ee;strokeWidth=2;fontFamily=Inter;fontSize=16;fontStyle=1;fontColor=#7dd3fc;align=left;spacingLeft=16;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="580" height="340" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="planner" value="Planner" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#38bdf8;strokeWidth=1.5;fontFamily=Inter;fontSize=14;fontColor=#e6edf3;" vertex="1" parent="1">
+          <mxGeometry x="120" y="260" width="160" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="llm" value="LLM Brain&#xa;(Gemini 3.0 Flash)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f59e0b;strokeWidth=2;fontFamily=Inter;fontSize=13;fontStyle=1;fontColor=#fde68a;" vertex="1" parent="1">
+          <mxGeometry x="120" y="350" width="180" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="risk" value="Risk&#xa;Check" style="rhombus;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f59e0b;strokeWidth=2;fontFamily=Inter;fontSize=13;fontStyle=1;fontColor=#fde68a;" vertex="1" parent="1">
+          <mxGeometry x="380" y="260" width="130" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="executor" value="Executor&#xa;(auto-execute)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#34d399;strokeWidth=2;fontFamily=Inter;fontSize=14;fontStyle=1;fontColor=#a7f3d0;" vertex="1" parent="1">
+          <mxGeometry x="380" y="400" width="180" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gemini" value="☁️ Gemini API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f59e0b;strokeWidth=1.5;fontFamily=Inter;fontSize=12;fontStyle=1;fontColor=#fde68a;" vertex="1" parent="1">
+          <mxGeometry x="120" y="455" width="170" height="42" as="geometry"/>
+        </mxCell>
+
+        <!-- HITL Gate group -->
+        <mxCell id="hitl_bg" value="🛡️ Human-in-the-Loop Gate" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#1a0a2e;strokeColor=#c084fc;strokeWidth=2;fontFamily=Inter;fontSize=16;fontStyle=1;fontColor=#ddd6fe;align=left;spacingLeft=16;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="700" y="200" width="560" height="340" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="pause" value="⏸️ Paused&#xa;(waiting approval)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d1b4e;strokeColor=#c084fc;strokeWidth=1.5;fontFamily=Inter;fontSize=13;fontColor=#e6edf3;" vertex="1" parent="1">
+          <mxGeometry x="730" y="270" width="180" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="approve" value="✅ Approve" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#064e3b;strokeColor=#34d399;strokeWidth=1.5;fontFamily=Inter;fontSize=12;fontStyle=1;fontColor=#a7f3d0;" vertex="1" parent="1">
+          <mxGeometry x="960" y="260" width="130" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="edit_approve" value="✏️ Edit+Approve" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#fbbf24;strokeWidth=1.5;fontFamily=Inter;fontSize=12;fontStyle=1;fontColor=#fef3c7;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="260" width="130" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="reject" value="❌ Reject" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#450a0a;strokeColor=#f87171;strokeWidth=1.5;fontFamily=Inter;fontSize=12;fontStyle=1;fontColor=#fecaca;" vertex="1" parent="1">
+          <mxGeometry x="960" y="320" width="130" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="cancel" value="🚫 Cancel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f87171;strokeWidth=1;fontFamily=Inter;fontSize=12;fontStyle=1;fontColor=#fca5a5;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="320" width="130" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="states_info" value="States: PENDING → APPROVED | REJECTED | EDITED | CANCELLED | EXPIRED&#xa;Every transition → AuditLogger (SQLite)" style="text;html=1;strokeColor=none;fillColor=none;fontFamily=Inter;fontSize=11;fontColor=#94a3b8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="730" y="390" width="500" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- Tool Registry -->
+        <mxCell id="registry" value="Tool Registry&#xa;(35+ tools)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#111827;strokeColor=#34d399;strokeWidth=2;fontFamily=Inter;fontSize=14;fontStyle=1;fontColor=#a7f3d0;" vertex="1" parent="1">
+          <mxGeometry x="380" y="580" width="200" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- OAuth -->
+        <mxCell id="oauth" value="🔑 OAuth 2.0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#a78bfa;strokeWidth=1.5;fontFamily=Inter;fontSize=12;fontStyle=1;fontColor=#ddd6fe;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="580" width="140" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- Google Workspace APIs group -->
+        <mxCell id="gw_bg" value="☁️ Google Workspace APIs" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#0c1222;strokeColor=#a78bfa;strokeWidth=2;fontFamily=Inter;fontSize=15;fontStyle=1;fontColor=#ddd6fe;align=left;spacingLeft=16;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="120" y="700" width="1360" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gmail" value="📧 Gmail API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#22d3ee;strokeWidth=1;fontFamily=Inter;fontSize=12;fontColor=#e6edf3;" vertex="1" parent="1">
+          <mxGeometry x="150" y="745" width="220" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="calendar" value="📅 Calendar API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#f87171;strokeWidth=1;fontFamily=Inter;fontSize=12;fontColor=#e6edf3;" vertex="1" parent="1">
+          <mxGeometry x="390" y="745" width="220" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="docs" value="📄 Docs API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#fbbf24;strokeWidth=1;fontFamily=Inter;fontSize=12;fontColor=#e6edf3;" vertex="1" parent="1">
+          <mxGeometry x="630" y="745" width="220" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="sheets" value="📊 Sheets API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#4ade80;strokeWidth=1;fontFamily=Inter;fontSize=12;fontColor=#e6edf3;" vertex="1" parent="1">
+          <mxGeometry x="870" y="745" width="220" height="42" as="geometry"/>
+        </mxCell>
+        <mxCell id="drv" value="📁 Drive API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1e293b;strokeColor=#a78bfa;strokeWidth=1;fontFamily=Inter;fontSize=12;fontColor=#e6edf3;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="745" width="220" height="42" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" value="request" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#38bdf8;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Inter;fontSize=11;fontColor=#93c5fd;" edge="1" parent="1" source="user" target="backend"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" value="prompt + context" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#38bdf8;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Inter;fontSize=11;fontColor=#93c5fd;" edge="1" parent="1" source="backend" target="planner"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" value="messages[]" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#f59e0b;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Inter;fontSize=11;fontColor=#fde68a;" edge="1" parent="1" source="planner" target="llm"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#f59e0b;strokeWidth=1.5;endArrow=block;endFill=1;dashed=1;" edge="1" parent="1" source="llm" target="gemini"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" value="TaskPlan" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#22d3ee;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Inter;fontSize=11;fontColor=#a5f3fc;" edge="1" parent="1" source="planner" target="risk"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" value="LOW → auto" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#34d399;strokeWidth=2.5;endArrow=block;endFill=1;fontFamily=Inter;fontSize=12;fontStyle=1;fontColor=#a7f3d0;" edge="1" parent="1" source="risk" target="executor"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" value="≥ MEDIUM → interrupt()" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#c084fc;strokeWidth=2.5;endArrow=block;endFill=1;fontFamily=Inter;fontSize=12;fontStyle=1;fontColor=#ddd6fe;" edge="1" parent="1" source="risk" target="pause"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" value="approval request" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#c084fc;strokeWidth=2;endArrow=block;endFill=1;dashed=1;fontFamily=Inter;fontSize=11;fontColor=#ddd6fe;" edge="1" parent="1" source="pause" target="user"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#34d399;strokeWidth=1.5;endArrow=block;endFill=1;" edge="1" parent="1" source="pause" target="approve"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#f87171;strokeWidth=1.5;endArrow=block;endFill=1;" edge="1" parent="1" source="pause" target="reject"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" value="resume execution" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#34d399;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Inter;fontSize=11;fontColor=#a7f3d0;" edge="1" parent="1" source="approve" target="executor"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" value="invoke(tool, args)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#34d399;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Inter;fontSize=11;fontColor=#a7f3d0;" edge="1" parent="1" source="executor" target="registry"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" value="API calls (Bearer token)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#a78bfa;strokeWidth=2;endArrow=block;endFill=1;fontFamily=Inter;fontSize=11;fontColor=#ddd6fe;" edge="1" parent="1" source="registry" target="gw_bg"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" value="tokens" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#a78bfa;strokeWidth=1.5;endArrow=block;endFill=1;dashed=1;fontFamily=Inter;fontSize=11;fontColor=#ddd6fe;" edge="1" parent="1" source="oauth" target="gw_bg"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14" value="results JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#38bdf8;strokeWidth=1.5;endArrow=block;endFill=1;dashed=1;fontFamily=Inter;fontSize=11;fontColor=#93c5fd;" edge="1" parent="1" source="backend" target="user"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend" value="Legend:&#xa;🟢 Green = safe auto-execution&#xa;🟡 Amber = LLM reasoning&#xa;🟣 Purple = HITL approval flow&#xa;🔵 Blue = request/response&#xa;🟣 Violet = Google API calls" style="text;html=1;strokeColor=#333;fillColor=#111827;fontFamily=Inter;fontSize=11;fontColor=#94a3b8;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="840" width="280" height="100" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
